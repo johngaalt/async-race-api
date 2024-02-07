@@ -1,5 +1,4 @@
 const jsonServer = require("json-server");
-const cors = require("cors");
 
 const db = {
   garage: [
@@ -43,7 +42,11 @@ const state = { velocity: {}, blocked: {} };
 
 server.use(middlewares);
 
-server.use(cors());
+server.use((_req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  next();
+});
 
 server.patch("/engine", (req, res) => {
   const { id, status } = req.query;
