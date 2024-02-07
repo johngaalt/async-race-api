@@ -45,8 +45,7 @@ server.use(middlewares);
 
 server.use(
   cors({
-    origin: true,
-    credentials: true,
+    origin: false,
     preflightContinue: false,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   }),
